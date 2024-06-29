@@ -35,9 +35,9 @@ filters = [
         html.Div([
             html.Div("Weights for Rank:"),
             dcc.Input(1, id='weight_upvotes', type='number', min = -10, max = 10, step=0.1, className='bg-zinc-700 hover:bg-zinc-600 font-semibold px-1 py-0 rounded-md w-1/6'),
-            html.Img(src = 'assets/upvote.png', className = 'h-4 w-4 aspect-square shrink-0 grow-0'),
+            html.Img(src = 'assets/upvote.png', className = 'h-4 w-4 aspect-square shrink-0 grow-0 mt-1'),
             dcc.Input(0.2, id='weight_comments', type='number', min = -10, max = 10, step=0.1, className='bg-zinc-700 hover:bg-zinc-600 font-semibold px-1 py-0 rounded-md w-1/6'),
-            html.Img(src = 'assets/comment.png', className = 'h-4 w-4 aspect-square shrink-0 grow-0'),
+            html.Img(src = 'assets/comment.png', className = 'h-4 w-4 aspect-square shrink-0 grow-0 mt-1'),
         ],className = 'flex flex-row gap-2' ),
         html.Div([
         html.Div("Post created at:"),

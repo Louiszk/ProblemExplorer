@@ -29,7 +29,14 @@ To run the project locally, follow these steps:
    pip install -r requirements.txt
    ```
 
-3. Start the application:
+3. Download Glove.6B:
+   https://nlp.stanford.edu/data/glove.6B.zip
+   (50 Dimensions) and save it under glove.6B/glove.6B.50d.txt
+
+4. Set OpenAI API credentials:
+   Adjust `api_key.json`
+
+5. Start the application:
    ```bash
    py Problemexplorer.py
    ```
@@ -37,9 +44,15 @@ To run the project locally, follow these steps:
 
 ## Usage
 
-- Adjust `api_key.json` to set OpenAI API credentials
-- Run `crawling_reddit_async.py` to fetch more Reddit posts.
+- Run `crawling_reddit_async.py` to fetch more Reddit posts from categories of your choice.
+- Choose these categories in the Sunburst
+- Choose Subreddits you want to analyse further
+- Explore Problems
 
 ## Screenshots
+
+![Full Application](assets/Screenshots/full.png)
+![Filters](assets/Screenshots/filters.png)
+
 
 

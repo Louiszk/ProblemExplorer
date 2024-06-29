@@ -5,6 +5,16 @@ body {
     position: relative;
   }
 
+  
+.dash-debug-menu {
+    display: none !important;
+}
+.dash-debug-menu__content{
+    display: none !important;
+}
+.dash-debug-menu__outer{
+    display: none !important;
+}
 /*Dropdown*/
 
 .Select-value-label{
