@@ -1,0 +1,13 @@
+dash
+dash_bootstrap_components
+plotly
+spacy
+numpy
+umap-learn
+circlify
+textblob
+requests
+lxml
+aiohttp
+openai
+

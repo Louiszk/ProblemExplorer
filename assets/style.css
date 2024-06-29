@@ -1,0 +1,83 @@
+body {
+    width: 100vw;
+    height: 120vh;
+    overflow-x: hidden; 
+    position: relative;
+  }
+
+/*Dropdown*/
+
+.Select-value-label{
+    color:#ffffff !important;
+}
+.Select-control {
+    background-color: #414141 !important;
+    color:#ffffff;
+    font-weight: 900;
+}
+.Select-menu-outer {
+    background-color: #414141 !important;
+}
+.Select-control.is-open {
+    background-color: #414141 !important;
+}
+.Select {
+    font-weight: 600;
+    background-color: #414141 !important;
+  }
+.dash-dropdown{
+    min-width: 70% !important;
+}
+
+
+.modal-content {
+    background-color: #27272A;
+    color: #ffffff;
+}
+
+input[type="checkbox"] {
+    accent-color: #f83434 !important;
+    margin-right: 4px !important;
+    width: 12px !important;
+    height: 12px !important;
+    }
+
+    /* MultiSlider */
+#ts_slider .rc-slider-track {
+    background-color: #f59992 !important;
+}
+
+#ts_slider .rc-slider-dot {
+    border-color: #439eaa !important;
+}
+
+#ts_slider .rc-slider-dot-active {
+    border-color: #e4665d !important;
+}
+
+#ts_slider .rc-slider-mark-text {
+    color: #ffffff !important;
+}
+#ts_slider .rc-slider-rail {
+    background-color: #43a3aa !important;
+}
+
+#ts_slider .rc-slider-handle {
+    background-color: #e4665d !important;
+    border-color: #e4665d !important;
+    opacity: 1;
+}
+  
+#ts_slider .rc-slider-handle-dragging {
+    border-color: #e4665d;
+    box-shadow: none !important;
+  }
+
+
+.Select-value {
+    border-color: #e4665d !important;
+}
+
+.Select-value-icon {
+    color: #e4665d !important;
+}
