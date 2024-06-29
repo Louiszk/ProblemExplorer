@@ -100,7 +100,7 @@ def get_community_elements(nodes):
 
     elements = []
     for i, (node_id, circle) in enumerate(zip(ids, circles)):
-        relative_size = (sizes[i]-min_size)/(max_size-min_size)
+        relative_size = (sizes[i]-min_size)/(max_size-min_size) if max_size>min_size else 0.8
         elements.append({
             'data': {
                 'id': node_id,

@@ -34,6 +34,7 @@ To run the project locally, follow these steps:
    (50 Dimensions) and save it under glove.6B/glove.6B.50d.txt
 
 4. Set OpenAI API credentials:
+   (Only needed if you want summaries of the problems and/or ideas to solve them)
    Adjust `api_key.json`
 
 5. Start the application:
