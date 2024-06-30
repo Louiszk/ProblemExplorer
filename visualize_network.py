@@ -107,7 +107,9 @@ def show_problems_network(data, colors_data, wu, wc):
          
         position = wordcloud_embedding_reduced[i] * 2000
         font_size = math.ceil(math.log2(wordcount)*100)
-        '''
+        
+        position_x = position[0]
+        position_y = position[1]
         #collision detection words
         def calculate_bounding_box(word, font_size, x, y):
             word_length = len(word)
@@ -157,12 +159,12 @@ def show_problems_network(data, colors_data, wu, wc):
                     break
 
         placed_bboxes.append(bbox)
-        '''
+        
 
         word_nodes.append({'data': {'id': word,
                 'font': f"{font_size}px"},
                 #'color': , maybe here some font color to encode ...
-               'position': {'x': position[0], 'y': position[1]},
+               'position': {'x': position_x, 'y': position_y},
                'classes': 'word'})
         
     edges = [] #connect same subreddits?

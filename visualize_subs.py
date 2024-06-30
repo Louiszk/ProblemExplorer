@@ -60,9 +60,23 @@ filters_modal = dbc.Modal([
             id="filter_modal",
             is_open=False
                 )
-                
+
+error_modal =  dbc.Modal([
+                dbc.ModalBody('Missing Data', className="font-bold text-xl"),
+                dbc.ModalFooter([html.Div("Unfortunately, you did not crawl one of the categories", className="font-semibold flex justify-center"),
+                                html.Div("Please use crawling_reddit_async.py to get the missing categories.", className = 'text-sm font-semibold')],
+                                className = 'flex flex-col gap-1'
+                                 
+                ),
+            ],
+        id="error_modal",
+        className = 'error-modal',
+        is_open=False
+            )
+
 subs_layout = html.Div([
     filters_modal,
+    error_modal,
     dcc.Store(id = 'colors_data'),
     cy.communities_network,
     html.Div([
@@ -158,6 +172,7 @@ def get_problem_cards(filtered_problems):
 @callback(
     Output('communities_network', 'elements'),
     Output('selected_categories', 'data'),
+    Output('error_modal', 'is_open'),
     Input('view_subreddits', 'n_clicks'),
     State('categories_selection_dropdown', 'value'),
     prevent_initial_call = True
@@ -173,13 +188,15 @@ def put_elements(n, leaves):
                 category_problems = json.load(file)
         except Exception as e:
             print(e)
+            return no_update, no_update, True
         
         all_subs.extend([problem[4].split("/")[4] for problem in category_problems])
     
     counter = Counter(all_subs)
-    nodes = sorted([(sid, count) for sid, count in list(counter.items()) if count>1], key=lambda x: x[1], reverse=True)
+    threshold = 1 if len(leaves)==1 else 2
+    nodes = sorted([(sid, count) for sid, count in list(counter.items()) if count>=threshold], key=lambda x: x[1], reverse=True)
     
-    return get_community_elements(nodes), leaves
+    return get_community_elements(nodes), leaves, False
 
 
 @callback(
@@ -213,11 +230,17 @@ def show_problems(n, leaves, sND, elements, number_problems, weight_upvotes, wei
                 category_problems = json.load(file)
         except Exception as e:
             print(e)
-        if len(sND)>0:
-            all_problems.extend([cp + [category] for cp in category_problems if cp[4].split("/")[4] in selected_subreddits])
-        else:
-            all_problems.extend(category_problems)
-    
+        
+        unique_urls = set()
+        unique_problems = []
+        for cp in category_problems:
+            if cp[4].split("/")[4] in selected_subreddits:
+                if cp[4] not in unique_urls:
+                    unique_problems.append(cp + [category])
+                    unique_urls.add(cp[4])
+            
+        all_problems.extend(unique_problems)
+
     filtered_problems = get_filtered_problems(all_problems, number_problems, weight_upvotes, weight_comments, ts_value)
     children = get_problem_cards(filtered_problems)
     colors_children, colors_data = get_colors(leaves)

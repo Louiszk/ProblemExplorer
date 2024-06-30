@@ -126,8 +126,6 @@ def update_sunburst(data):
     Output('selection_info', 'children'),
     Output('categories_selection_dropdown', 'options'),
     Output('categories_selection_dropdown', 'value'),
-    Output('view_subreddits', 'className'),
-    Output('view_subreddits', 'disabled'),
     Input('sunburst_chart_click', 'title'),
     State('full_categories', 'data'),
     prevent_initial_call = True
@@ -138,9 +136,17 @@ def change_sub_categories(title, data):
     end_categories, end_state = get_end_categories(data, clicked_label)
 
     return get_sunburst_data(data, clicked_label), f"You've selected {current}" if end_state else "", \
-    end_categories if end_state else [], end_categories if end_state else [], \
-    'rounded-md px-2 py-2 border-2 border-red-600 bg-red-200 text-zinc-800 font-semibold h-12' if end_state else 'rounded-md px-2 py-2 border-2 border-red-600 bg-red-200 text-zinc-800 font-semibold h-12 cursor-not-allowed', \
-    not end_state
+    end_categories if end_state else [], end_categories if end_state else []
+
+@callback(
+    Output('view_subreddits', 'className'),
+    Output('view_subreddits', 'disabled'),
+    Input('categories_selection_dropdown', 'value'),
+    prevent_initial_call = True
+)
+def disable_button(v):
+    return 'rounded-md px-2 py-2 border-2 border-red-600 bg-red-200 text-zinc-800 font-semibold h-12' if len(v)>0 else 'rounded-md px-2 py-2 border-2 border-red-600 bg-red-200 text-zinc-800 font-semibold h-12 cursor-not-allowed', \
+    not len(v)>0
 
 #Remove Default Interactions
 clientside_callback(

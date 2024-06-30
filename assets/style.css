@@ -45,6 +45,11 @@ body {
     color: #ffffff;
 }
 
+.error-modal .modal-content {
+    background-color: #df4747;
+    color: #ffffff;
+}
+
 input[type="checkbox"] {
     accent-color: #f83434 !important;
     margin-right: 4px !important;
